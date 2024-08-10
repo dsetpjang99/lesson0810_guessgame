@@ -39,6 +39,10 @@
             padding: 6px 8px;
             border-radius: 3px;
         }
+
+        input {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -99,10 +103,10 @@
                     resultEl.innerHTML = `遊戲結束<br>答案為:${computer}`;
 
                 } else {
-                    if (number < computer) {
+                    if (number > computer) {
                         //alert("猜低一點！");
                         resultEl.innerHTML = "猜低一點！";
-                    } else {
+                    } else if (number < computer) {
                         //alert("猜高一點！");
                         resultEl.innerHTML = "猜高一點！";
                     }
@@ -129,9 +133,28 @@
         });
 
         //電腦給出的題目
-        let computer = 25;
+        let computer = getRandomInt(1, 50);
 
-        console.log(numberEl, answerBtnEl, resultEl, restartBtnEl);
+        console.log(numberEl, answerBtnEl, resultEl, restartBtnEl)
+
+        /**亂數測試
+         * let x = 6.8;
+         * console.log(x, Math.floor(x), Math.ceil(x));
+         */
+        //console.log(Math.random());
+        /**0~9 => 1~10
+         * console.log(Math.floor(Math.random() * 10 + 1));
+         */
+        /**
+         * for (let i = 0; i < 10; i++) {
+         *  console.log(getRandomInt(0, 10));
+         * }
+         */
+
+
+        function getRandomInt(start, end) {
+            return Math.floor(Math.random() * (end - start + 1)) + start;
+        }
     </script>
 </body>
 
